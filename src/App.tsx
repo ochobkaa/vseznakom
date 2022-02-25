@@ -5,8 +5,6 @@ import ContentMobile from "./ContentMobile";
 import {ThemeProvider} from "@mui/material";
 import Palette from "./palette";
 import {BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import store from "./store";
 import useVkAuth from "./hooks/vkAuth/vkAuth";
 
 const MAX_MOBILE_WIDTH = 800
