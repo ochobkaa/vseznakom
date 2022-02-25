@@ -1,3 +1,3 @@
-const CurrentDomain = "http://localhost:3000";
+const CurrentDomain = "http://vseznakom.vercel.app";
 
 export default CurrentDomain;
