@@ -15,6 +15,7 @@ function App() {
     );
 
     const error = useVkAuth();
+    console.log(error);
 
     return (
         <BrowserRouter>
