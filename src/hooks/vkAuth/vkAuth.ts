@@ -5,6 +5,8 @@ import TokenError from "./vkAuth.TokenError";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../store";
 import AuthSlice from "../../store/authSlice";
+import checkHash from "./vkAuth.checkHash";
+import {useNavigate} from "react-router-dom";
 
 const useVkAuth = () => {
     const [error, setError] = useState<TokenError | null>(null);
@@ -12,11 +14,15 @@ const useVkAuth = () => {
     const dispatch = useDispatch<AppDispatch>();
     const actions = AuthSlice.actions;
 
+    const navigate = useNavigate();
+
     const setToken = (token: Token) => {
         dispatch(actions.login(token))
     }
 
-    const onHashChange = () => {
+    const onLoad = () => {
+        if (!checkHash()) return;
+
         const response = getAuth();
 
         if (response.tokenDidReceived) {
@@ -27,17 +33,19 @@ const useVkAuth = () => {
             const error = response.response as TokenError;
             setError(error);
         }
+
+        navigate("/", {replace: true});
     };
 
     useEffect(
         () => {
-            window.addEventListener("hashchange", onHashChange)
+            window.addEventListener("load", onLoad)
 
-            return () => window.removeEventListener("hashchange", onHashChange)
+            return () => window.removeEventListener("load", onLoad)
         }
     )
 
-    return error
+    return error;
 }
 
 export default useVkAuth;
