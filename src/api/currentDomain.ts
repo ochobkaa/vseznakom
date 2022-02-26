@@ -1,3 +1,3 @@
-const CurrentDomain = "https://vseznakom.vercel.app";
+const CurrentDomain = "vseznakom.vercel.app";
 
 export default CurrentDomain;
