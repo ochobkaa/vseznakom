@@ -5,7 +5,7 @@ import TokenError from "./vkAuth.TokenError";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../store";
 import AuthSlice from "../../store/authSlice";
-import checkHash from "./vkAuth.checkHash";
+import checkReferrer from "./vkAuth.checkReferrer";
 
 const useVkAuth = () => {
     const [error, setError] = useState<TokenError | null>(null);
@@ -18,7 +18,7 @@ const useVkAuth = () => {
     }
 
     const onLoad = () => {
-        if (!checkHash()) return;
+        if (!checkReferrer()) return;
 
         const response = getAuth();
 
