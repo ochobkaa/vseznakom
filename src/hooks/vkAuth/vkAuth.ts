@@ -6,15 +6,12 @@ import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../store";
 import AuthSlice from "../../store/authSlice";
 import checkHash from "./vkAuth.checkHash";
-import {useNavigate} from "react-router-dom";
 
 const useVkAuth = () => {
     const [error, setError] = useState<TokenError | null>(null);
 
     const dispatch = useDispatch<AppDispatch>();
     const actions = AuthSlice.actions;
-
-    const navigate = useNavigate();
 
     const setToken = (token: Token) => {
         dispatch(actions.login(token))
@@ -33,8 +30,6 @@ const useVkAuth = () => {
             const error = response.response as TokenError;
             setError(error);
         }
-
-        navigate("/", {replace: true});
     };
 
     useEffect(
