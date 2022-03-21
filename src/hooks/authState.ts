@@ -1,8 +1,9 @@
 import {useSelector} from "react-redux";
 import {AppState} from "../store";
+import useAppSelector from "./appSelector";
 
 const useAuthState = () => {
-    const token = useSelector((state : AppState) => state.auth.token);
+    const token = useAppSelector(state=> state.auth.token);
     return Boolean(token);
 }
 

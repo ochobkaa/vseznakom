@@ -1,24 +1,17 @@
 import {configureStore} from "@reduxjs/toolkit";
-import createSagaMiddleware from "redux-saga";
 import AuthSlice from "./authSlice";
-import RootSaga from "./saga";
-
-const sagaMiddleware = createSagaMiddleware({});
+import vkApi from "../api/vkApi";
 
 const Store = configureStore({
     reducer: {
-        auth: AuthSlice.reducer
+        auth: AuthSlice.reducer,
+        [vkApi.reducerPath]: vkApi.reducer
     },
-
-    middleware: (getDefaultMiddleware) => {
-        const defaultMiddleware = getDefaultMiddleware({thunk: false});
-
-        return defaultMiddleware.concat(sagaMiddleware);
-    }
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(vkApi.middleware)
 });
 
-sagaMiddleware.run(RootSaga);
-
-export type AppState = ReturnType<typeof Store.getState>
-export type AppDispatch = typeof Store.dispatch;
+export type AppState = ReturnType<typeof Store.getState>;
+export type AppStore = typeof Store;
+export type AppDispatch = AppStore["dispatch"];
 export default Store;

@@ -2,8 +2,8 @@ import {useEffect, useState} from "react";
 import Token from "./vkAuth.Token";
 import getAuth from "./vkAuth.getAuth";
 import TokenError from "./vkAuth.TokenError";
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "../../store";
+import {useDispatch, useStore} from "react-redux";
+import {AppDispatch, AppStore} from "../../store";
 import AuthSlice from "../../store/authSlice";
 import checkReferrer from "./vkAuth.checkReferrer";
 

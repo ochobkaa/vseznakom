@@ -8,13 +8,14 @@ import Logo from "./Logo";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../../store";
 import AuthSlice from "../../../store/authSlice";
-import {AuthLink} from "../../../api/implicitFlow";
+import {AuthLink} from "../../../api/vkApi/vkApi.implicitFlow";
 import useAuthState from "../../../hooks/authState";
+import useAppDispatch from "../../../hooks/appDispatch";
 
 const Navbar = () => {
     const isAuth = useAuthState();
 
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
     const actions = AuthSlice.actions;
 
     const onLogin = () => {
