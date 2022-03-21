@@ -9,17 +9,7 @@ const useUserData = () => {
         fields: "photo_100"
     });
 
-    if (currentData) {
-        const userData = currentData[0];
-
-        return {
-            avatarSrc: userData.photo_100 ?? "",
-            lastName: userData.last_name
-        }
-    }
-    else {
-        return null;
-    }
+    return currentData;
 }
 
 export default useUserData;
