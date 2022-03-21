@@ -4,13 +4,13 @@ import VkApi from "../../../../../api/vkApi";
 const useUserData = () => {
     const token = useToken();
 
-    const {data} = VkApi.useUserGetQuery({
+    const {currentData} = VkApi.useUserGetQuery({
         access_token: token,
         fields: "photo_100"
     });
 
-    if (data) {
-        const userData = data[0];
+    if (currentData) {
+        const userData = currentData[0];
 
         return {
             avatarSrc: userData.photo_100 ?? "",
