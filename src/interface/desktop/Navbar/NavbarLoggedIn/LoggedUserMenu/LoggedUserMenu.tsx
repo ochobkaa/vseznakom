@@ -24,7 +24,7 @@ const LoggedUserMenu = () => {
         <>
             {userData && <UserMenuButton
                 onClick={onUserMenuButtonClick}
-                avatarSrc={userData.photo_50 ?? ""}
+                avatarSrc={userData.photo_100 ?? ""}
                 lastName={userData.last_name}
             />}
             <UserActionsMenu

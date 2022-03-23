@@ -14,6 +14,7 @@ import useAppDispatch from "../../../hooks/appDispatch";
 import VkApi from "../../../api/vkApi";
 import LoggedUser from "../../../store/authSlice/authSlice.LoggedUser";
 import {UsersGetResponse} from "@vkontakte/api-schema-typescript";
+import VK_API_VERSION from "../../../etc/vkApiVersion";
 
 const Navbar = () => {
     const isAuth = useAuthState();
@@ -23,14 +24,21 @@ const Navbar = () => {
 
     const dispatchLoggedUser = (response: UsersGetResponse) => {
         const loggedUser = response[0];
-        dispatch(actions.login(loggedUser));
+        dispatch(actions.login(loggedUser as LoggedUser));
     }
 
     const onLogin = () => {
         VkApi.login();
 
         if (VkApi.isAuth) {
-            VkApi.call("user.get", dispatchLoggedUser)
+            VkApi.call(
+                "users.get",
+                dispatchLoggedUser,
+                {
+                    fields: "city,status,photo_100,photo_400",
+                    v: VK_API_VERSION
+                }
+            )
         }
     }
 
