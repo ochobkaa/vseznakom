@@ -22,6 +22,7 @@ const Navbar = () => {
     const isAuth = useAuthState();
 
     const dispatchLoggedUser = (response: UsersGetResponse) => {
+        console.log(response ? response : "да нахуй пошел всратыш блять уеба")
         const loggedUser = response[0];
         dispatch(actions.setLoggedUser(loggedUser as LoggedUser));
     }
