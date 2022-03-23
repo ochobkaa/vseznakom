@@ -17,20 +17,19 @@ import {UsersGetResponse} from "@vkontakte/api-schema-typescript";
 import VK_API_VERSION from "../../../etc/vkApiVersion";
 
 const Navbar = () => {
-    const isAuth = useAuthState();
-
     const dispatch = useAppDispatch();
     const actions = AuthSlice.actions;
+    const isAuth = useAuthState();
 
     const dispatchLoggedUser = (response: UsersGetResponse) => {
         const loggedUser = response[0];
-        dispatch(actions.login(loggedUser as LoggedUser));
+        dispatch(actions.setLoggedUser(loggedUser as LoggedUser));
     }
 
     const onLogin = () => {
-        VkApi.login();
+        dispatch(actions.login());
 
-        if (VkApi.isAuth) {
+        if (isAuth) {
             VkApi.call(
                 "users.get",
                 dispatchLoggedUser,
@@ -43,8 +42,6 @@ const Navbar = () => {
     }
 
     const onLogout = () => {
-        VkApi.logout();
-
         dispatch(actions.logout());
     }
 

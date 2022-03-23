@@ -15,7 +15,6 @@ class VkApi {
 
     private checkSession(auth: Auth) {
         this.status = auth.status;
-        console.log(auth);
         if (!auth.session) return;
 
         const session = auth.session;
