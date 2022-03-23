@@ -4,11 +4,8 @@ import vkApi from "../api/vkApi";
 
 const Store = configureStore({
     reducer: {
-        auth: AuthSlice.reducer,
-        [vkApi.reducerPath]: vkApi.reducer
-    },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(vkApi.middleware)
+        auth: AuthSlice.reducer
+    }
 });
 
 export type AppState = ReturnType<typeof Store.getState>;
