@@ -21,7 +21,7 @@ class VkApi {
         }
 
         const session = auth.session;
-        const sessionString = `expire=${session.expire}&mid=${session.mid}&secret=${session.secret}&sid=${session.sid}&${process.env.REACT_APP_VK_APP_KEY}`;
+        const sessionString = `expire=${session.expire}mid=${session.mid}secret=${session.secret}sid=${session.sid}${process.env.REACT_APP_VK_APP_KEY}`;
         const sessionHash = MD5.hash(sessionString);
 
         this.isAuth = sessionHash === session.sig;
