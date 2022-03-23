@@ -22,7 +22,6 @@ const authSlice = createSlice({
             state.loggedUser = null;
         },
         setLoggedUser(state, action : PayloadAction<LoggedUser>) {
-            console.log(action.payload ? action.payload : "ебаный рот этого казино");
             state.loggedUser = action.payload;
         }
     }

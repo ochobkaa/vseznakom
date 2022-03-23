@@ -48,7 +48,7 @@ class VkApi {
 
     logout() {
         // @ts-ignore
-        VK.auth.logout(this.resetAuth);
+        VK.Auth.logout(this.resetAuth);
 
         return this.status;
     }
