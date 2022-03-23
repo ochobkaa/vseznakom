@@ -13,11 +13,11 @@ const authSlice = createSlice({
     initialState: initialState,
     reducers: {
         login(state) {
+            VkApi.subscribe("auth.login", () => state.isAuth = VkApi.isAuth);
             VkApi.login();
-            state.isAuth = VkApi.isAuth;
         },
         logout(state) {
-            VkApi.logout();
+            VkApi.subscribe("auth.logout", () => state.isAuth = VkApi.isAuth);
             state.isAuth = VkApi.isAuth;
         },
         setLoggedUser(state, action : PayloadAction<LoggedUser>) {
