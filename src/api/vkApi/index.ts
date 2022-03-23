@@ -28,6 +28,8 @@ class VkApi {
         onCheck && onCheck(this.isAuth);
 
         console.log(auth);
+        console.log(session.sig);
+        console.log(sessionHash);
         console.log(this.isAuth);
         console.log(process.env.REACT_APP_VK_APP_KEY ? "заебись ключ есть" : "ДА ЧТОБЫ МАТЬ ТВОЯ СОСАЛА ДО КОНЦА ДНЕЙ АНДЕФАЙНЕД ЕБУЧИЙ")
 
