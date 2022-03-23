@@ -24,7 +24,15 @@ const Navbar = () => {
     const dispatchLoggedUser = (responseArr: UsersGetResponse) => {
         console.log(responseArr ? responseArr : "да нахуй пошел всратыш блять уеба")
         const response = responseArr[0];
-        const loggedUser : LoggedUser = {...response}
+        const loggedUser : LoggedUser = {
+            id: response.id,
+            first_name: response.first_name,
+            last_name: response.last_name,
+            city: response.city,
+            status: response.status,
+            photo_100: response.photo_100,
+            photo_400: response.photo_400
+        }
         dispatch(actions.setLoggedUser(loggedUser));
     }
 
