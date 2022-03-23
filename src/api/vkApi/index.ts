@@ -56,6 +56,16 @@ class VkApi {
         // @ts-ignore
         VK.Api.call(methodName, params, callback);
     }
+
+    subscribe(eventName: string, handler: () => void) {
+        // @ts-ignore
+        VK.Observer.subscribe(eventName, handler);
+    }
+
+    unsubscribe(eventName: string, handler: () => void) {
+        // @ts-ignore
+        VK.Observer.unsubscribe(eventName, handler);
+    }
 }
 
 export default new VkApi();
