@@ -13,42 +13,28 @@ class VkApi {
     status: Auth["status"] = "unknown";
     userData: LoggedUserData | null = null;
 
-    private checkSession(auth: Auth, onCheck?: (isAuth: boolean) => void) {
+    private checkSession(auth: Auth) {
         this.status = auth.status;
-        if (!auth.session) {
-            onCheck && onCheck(false);
-            return;
-        }
+        if (!auth.session) return;
 
         const session = auth.session;
         const sessionString = `expire=${session.expire}mid=${session.mid}secret=${session.secret}sid=${session.sid}${process.env.REACT_APP_VK_APP_KEY}`;
         const sessionHash = MD5.hash(sessionString);
 
         this.isAuth = sessionHash === session.sig;
-        onCheck && onCheck(this.isAuth);
-
-        console.log(auth);
-        console.log(session.sig);
-        console.log(sessionHash);
-        console.log(this.isAuth);
-        console.log(process.env.REACT_APP_VK_APP_KEY ? "заебись ключ есть" : "ДА ЧТОБЫ МАТЬ ТВОЯ СОСАЛА ДО КОНЦА ДНЕЙ АНДЕФАЙНЕД ЕБУЧИЙ")
 
         this.isAuth && (this.userData = session.user);
     }
 
-    private resetAuth (auth: Auth, onReset?: (isAuth: boolean) => void) {
+    private resetAuth (auth: Auth) {
         this.isAuth = false;
         this.userData = null;
         this.status = auth.status;
-
-        onReset && onReset(false);
     }
 
-    login(onLogin?: (isAuth: boolean) => void) {
-        const loginCallback = (auth: Auth) => this.checkSession(auth, onLogin)
-
+    login() {
         // @ts-ignore
-        VK.Auth.login(loginCallback, 270336);
+        VK.Auth.login(this.checkSession, 270336);
 
         return this.status;
     }
@@ -60,11 +46,9 @@ class VkApi {
         return this.status;
     }
 
-    logout(onLogout?: (isAuth: boolean) => void) {
-        const logoutCallback = (auth: Auth) => this.checkSession(auth, onLogout)
-
+    logout() {
         // @ts-ignore
-        VK.auth.logout(logoutCallback);
+        VK.auth.logout(this.resetAuth);
 
         return this.status;
     }
