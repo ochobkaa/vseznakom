@@ -21,10 +21,8 @@ const Navbar = () => {
     const actions = AuthSlice.actions;
     const isAuth = useAuthState();
 
-    const dispatchLoggedUser = (responseArr: UsersGetResponse) => {
-        console.log(responseArr ? responseArr : "да нахуй пошел всратыш блять уеба")
-        const response = responseArr[0];
-        console.log(response ? response : "ДА КАКОГО ХУЯ БЛЯТЬ");
+    const dispatchLoggedUser = (responseArr: {response: UsersGetResponse}) => {
+        const response = responseArr.response[0];
         const loggedUser : LoggedUser = {
             id: response.id,
             first_name: response.first_name,
