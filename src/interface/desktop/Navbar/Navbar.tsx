@@ -29,16 +29,14 @@ const Navbar = () => {
     const onLogin = () => {
         dispatch(actions.login());
 
-        if (isAuth) {
-            VkApi.call(
-                "users.get",
-                dispatchLoggedUser,
-                {
-                    fields: "city,status,photo_100,photo_400",
-                    v: VK_API_VERSION
-                }
-            )
-        }
+        VkApi.call(
+            "users.get",
+            dispatchLoggedUser,
+            {
+                fields: "city,status,photo_100,photo_400",
+                v: VK_API_VERSION
+            }
+        )
     }
 
     const onLogout = () => {
