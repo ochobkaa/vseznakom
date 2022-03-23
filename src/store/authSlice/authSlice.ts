@@ -19,6 +19,7 @@ const authSlice = createSlice({
         logout(state) {
             VkApi.logout();
             state.isAuth = false;
+            state.loggedUser = null;
         },
         setLoggedUser(state, action : PayloadAction<LoggedUser>) {
             console.log(action.payload ? action.payload : "ебаный рот этого казино");
