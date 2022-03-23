@@ -2,9 +2,7 @@ import React, {useContext, useState} from 'react';
 import UserMenuButton from "./UserMenuButton";
 import UserActionsMenu from "./UserActionsMenu";
 import LoginCallbacksContext from "../../Navbar.Context.LoginCallbacks";
-import VkApi from "../../../../../api/vkApi";
-import useToken from "../../../../../hooks/token";
-import useUserData from "./LoggedUserMenu.useUserData";
+import useLoggedUser from "../../../../../hooks/loggedUser";
 
 const LoggedUserMenu = () => {
     const {onLogout} = useContext(LoginCallbacksContext);
@@ -12,7 +10,7 @@ const LoggedUserMenu = () => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const menuIsOpen = Boolean(anchorEl);
 
-    const userData = useUserData();
+    const userData = useLoggedUser();
 
     const onUserMenuButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget)
@@ -26,8 +24,8 @@ const LoggedUserMenu = () => {
         <>
             {userData && <UserMenuButton
                 onClick={onUserMenuButtonClick}
-                avatarSrc={userData[0].photo_100 ?? ""}
-                lastName={userData[0].last_name}
+                avatarSrc={userData.photo_50 ?? ""}
+                lastName={userData.last_name}
             />}
             <UserActionsMenu
                 open={menuIsOpen}

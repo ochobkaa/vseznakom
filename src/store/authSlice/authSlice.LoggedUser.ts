@@ -1,5 +1,5 @@
-import {UsersUser} from "@vkontakte/api-schema-typescript";
+import {UsersUser, UsersUserFull} from "@vkontakte/api-schema-typescript";
 
-type LoggedUser = Pick<UsersUser, "first_name" | "photo_50">;
+type LoggedUser = Pick<UsersUserFull, "id" | "first_name" | "last_name" | "city" | "status" | "photo_50" | "photo_400">;
 
 export default LoggedUser;

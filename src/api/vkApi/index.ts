@@ -1,22 +1,59 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {UsersGetParams, UsersGetResponse} from "@vkontakte/api-schema-typescript";
-import VK_API_VERSION from "../../etc/vkApiVersion";
+import Session from "./vkApi.Session";
+import MD5 from 'md5-es';
+import LoggedUserData from "./vkApi.LoggedUserData";
+import Auth from "./vkApi.Auth";
 
-interface AccessToken {
-    access_token: string
+type MethodParams = {
+    [p: string]: string | number,
+    v: string
+};
+
+class VkApi {
+    isAuth = false;
+    status: Auth["status"] = "unknown";
+    userData: LoggedUserData | null = null;
+
+    private checkSession(auth: Auth) {
+        const session = auth.session;
+        const sessionString = `expire=${session.expire}&mid=${session.mid}&secret=${session.secret}&sid=${session.sid}&${process.env.REACT_APP_VK_APP_KEY}`;
+        const sessionHash = MD5.hash(sessionString);
+
+        this.isAuth = sessionHash === session.sig;
+        this.userData = session.user;
+        this.status = auth.status;
+    }
+
+    private resetAuth (auth: Auth) {
+        this.isAuth = false;
+        this.userData = null;
+        this.status = auth.status;
+    }
+
+    login() {
+        // @ts-ignore
+        VK.Auth.login(this.checkSession, 270336);
+
+        return this.status;
+    }
+
+    getLoginStatus() {
+        // @ts-ignore
+        VK.Auth.getLoginStatus(this.checkSession);
+
+        return this.status;
+    }
+
+    logout() {
+        // @ts-ignore
+        VK.auth.logout(this.resetAuth);
+
+        return this.status;
+    }
+
+    call<Response>(methodName: string, callback: (response: Response) => void, params?: MethodParams) {
+        // @ts-ignore
+        VK.Api.call(methodName, params, callback);
+    }
 }
 
-const vkApi = createApi({
-    reducerPath: "vkApi",
-    baseQuery: fetchBaseQuery({baseUrl: "https://api.vk.com/method/"}),
-    endpoints: (build) => ({
-        userGet: build.query<UsersGetResponse, UsersGetParams & AccessToken>({
-            query: (params ) => ({
-                url: "/user.get",
-                params: {...params, "v": VK_API_VERSION}
-            })
-        })
-    })
-})
-
-export default vkApi;
+export default new VkApi();

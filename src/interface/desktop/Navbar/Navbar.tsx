@@ -11,6 +11,9 @@ import AuthSlice from "../../../store/authSlice";
 import {AuthLink} from "../../../api/vkApi/vkApi.implicitFlow";
 import useAuthState from "../../../hooks/authState";
 import useAppDispatch from "../../../hooks/appDispatch";
+import VkApi from "../../../api/vkApi";
+import LoggedUser from "../../../store/authSlice/authSlice.LoggedUser";
+import {UsersGetResponse} from "@vkontakte/api-schema-typescript";
 
 const Navbar = () => {
     const isAuth = useAuthState();
@@ -18,11 +21,22 @@ const Navbar = () => {
     const dispatch = useAppDispatch();
     const actions = AuthSlice.actions;
 
+    const dispatchLoggedUser = (response: UsersGetResponse) => {
+        const loggedUser = response[0];
+        dispatch(actions.login(loggedUser));
+    }
+
     const onLogin = () => {
-        window.location.href = AuthLink;
+        VkApi.login();
+
+        if (VkApi.isAuth) {
+            VkApi.call("user.get", dispatchLoggedUser)
+        }
     }
 
     const onLogout = () => {
+        VkApi.logout();
+
         dispatch(actions.logout());
     }
 
