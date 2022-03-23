@@ -1,8 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import AuthSliceState from "./authSlice.State";
 import LoggedUser from "./authSlice.LoggedUser";
+import VkApi from "../../api/vkApi";
 
 const initialState : AuthSliceState = {
+    isAuth: false,
     loggedUser: null
 };
 
@@ -12,9 +14,11 @@ const authSlice = createSlice({
     reducers: {
         login(state, action : PayloadAction<LoggedUser>) {
             state.loggedUser = action.payload;
+            state.isAuth = VkApi.isAuth;
         },
         logout(state) {
             state.loggedUser = null;
+            state.isAuth = VkApi.isAuth;
         }
     }
 })

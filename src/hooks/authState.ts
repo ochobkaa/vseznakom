@@ -1,10 +1,9 @@
 import {useSelector} from "react-redux";
 import {AppState} from "../store";
 import useAppSelector from "./appSelector";
-import VkApi from "../api/vkApi";
 
 const useAuthState = () => {
-    return VkApi.isAuth;
+    return useAppSelector(state => state.auth.isAuth);
 }
 
 export default useAuthState;
