@@ -39,7 +39,7 @@ const useLogin = () => {
         else if (!loggedUserStr && loginStatus === "connected") {
             onVkApiLoginEvent();
         }
-        else if (loggedUserStr && loginStatus !== "connected") {
+        else {
             onVkApiLogoutEvent();
         }
     }
