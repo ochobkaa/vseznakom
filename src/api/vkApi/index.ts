@@ -33,6 +33,8 @@ class VkApi {
     }
 
     login() {
+        this.checkSession.bind(this);
+
         // @ts-ignore
         VK.Auth.login(this.checkSession, 270336);
 
@@ -40,6 +42,8 @@ class VkApi {
     }
 
     getLoginStatus() {
+        this.checkSession.bind(this);
+
         // @ts-ignore
         VK.Auth.getLoginStatus(this.checkSession);
 
@@ -47,6 +51,8 @@ class VkApi {
     }
 
     logout() {
+        this.resetAuth.bind(this);
+
         // @ts-ignore
         VK.Auth.logout(this.resetAuth);
 
