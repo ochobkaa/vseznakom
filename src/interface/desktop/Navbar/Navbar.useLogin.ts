@@ -63,11 +63,10 @@ const useLogin = () => {
     const onVkApiLoginEvent = () => {
         dispatch(actions.login());
 
-        VkApi.userData && VkApi.call(
+        VkApi.call(
             "users.get",
             dispatchLoggedUser,
             {
-                user_ids: VkApi.userData.id,
                 fields: "city,status,photo_100,photo_400",
                 v: VK_API_VERSION
             }
