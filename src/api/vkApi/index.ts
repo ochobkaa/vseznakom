@@ -33,28 +33,22 @@ class VkApi {
     }
 
     login() {
-        this.checkSession.bind(this);
-
         // @ts-ignore
-        VK.Auth.login(this.checkSession, 270336);
+        VK.Auth.login(this.checkSession.bind(this), 270336);
 
         return this.status;
     }
 
     getLoginStatus() {
-        this.checkSession.bind(this);
-
         // @ts-ignore
-        VK.Auth.getLoginStatus(this.checkSession);
+        VK.Auth.getLoginStatus(this.checkSession.bind(this));
 
         return this.status;
     }
 
     logout() {
-        this.resetAuth.bind(this);
-
         // @ts-ignore
-        VK.Auth.logout(this.resetAuth);
+        VK.Auth.logout(this.resetAuth.bind(this));
 
         return this.status;
     }
