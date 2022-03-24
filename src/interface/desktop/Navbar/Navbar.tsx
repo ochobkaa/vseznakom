@@ -36,6 +36,8 @@ const Navbar = () => {
     }
 
     const onLogin = () => {
+        VkApi.subscribe("auth.sessionChange", () => console.log("я ебу чугун"));
+        VkApi.login();
         dispatch(actions.login());
 
         VkApi.call(
@@ -49,6 +51,7 @@ const Navbar = () => {
     }
 
     const onLogout = () => {
+        VkApi.logout();
         dispatch(actions.logout());
     }
 

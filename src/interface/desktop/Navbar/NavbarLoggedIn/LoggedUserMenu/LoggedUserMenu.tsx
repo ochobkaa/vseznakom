@@ -11,7 +11,6 @@ const LoggedUserMenu = () => {
     const menuIsOpen = Boolean(anchorEl);
 
     const userData = useLoggedUser();
-    console.log(userData ? userData : "ДА СУКА ГОВНА ПОЖУЙ НАХУЙ С НУЛЛОМ СВОИМ НАХУЙ СУКА ПИДОРАС")
 
     const onUserMenuButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget)
@@ -26,7 +25,7 @@ const LoggedUserMenu = () => {
             {userData && <UserMenuButton
                 onClick={onUserMenuButtonClick}
                 avatarSrc={userData.photo_100 ?? ""}
-                lastName={userData.last_name}
+                firstName={userData.first_name}
             />}
             <UserActionsMenu
                 open={menuIsOpen}

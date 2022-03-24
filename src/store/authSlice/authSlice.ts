@@ -13,11 +13,9 @@ const authSlice = createSlice({
     initialState: initialState,
     reducers: {
         login(state) {
-            VkApi.login();
             state.isAuth = true;
         },
         logout(state) {
-            VkApi.logout();
             state.isAuth = false;
             state.loggedUser = null;
         },

@@ -5,7 +5,7 @@ import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import UserMenuButtonProps from "./UserMenuButton.Props";
 
 const UserMenuButton = (props: UserMenuButtonProps) => {
-    const {onClick, avatarSrc, lastName} = props;
+    const {onClick, avatarSrc, firstName} = props;
 
     return (
         <Button
@@ -22,7 +22,7 @@ const UserMenuButton = (props: UserMenuButtonProps) => {
             }
             onClick={onClick}
         >
-            {lastName}
+            {firstName}
         </Button>
     );
 };
