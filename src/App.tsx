@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useWidth} from "./hooks/width";
 import Content from "./Content";
 import ContentMobile from "./ContentMobile";

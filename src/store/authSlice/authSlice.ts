@@ -1,7 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import AuthSliceState from "./authSlice.State";
 import LoggedUser from "./authSlice.LoggedUser";
-import VkApi from "../../api/vkApi";
 
 const initialState : AuthSliceState = {
     isAuth: false,
