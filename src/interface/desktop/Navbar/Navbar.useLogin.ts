@@ -31,10 +31,10 @@ const useLogin = () => {
         const loggedUserStr = window.localStorage.getItem(LOCAL_STORAGE_LOGGED_USER);
 
         if (loggedUserStr && loginStatus === "connected") {
-            dispatch(actions.login());
-
             const loggedUser = JSON.parse(loggedUserStr) as LoggedUser;
             dispatch(actions.setLoggedUser(loggedUser));
+
+            dispatch(actions.login());
         }
         else if (!loggedUserStr && loginStatus === "connected") {
             onVkApiLoginEvent();
@@ -61,8 +61,6 @@ const useLogin = () => {
     }
 
     const onVkApiLoginEvent = () => {
-        dispatch(actions.login());
-
         VkApi.call(
             "users.get",
             dispatchLoggedUser,
@@ -71,6 +69,8 @@ const useLogin = () => {
                 v: VK_API_VERSION
             }
         );
+
+        dispatch(actions.login());
     }
 
     const onVkApiLogoutEvent = () => {
