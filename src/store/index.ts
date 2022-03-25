@@ -1,10 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import AuthSlice from "./authSlice";
-import vkApi from "../api/vkApi";
+import DatingsGroupsSlice from "./datingsGroupsSlice";
 
 const Store = configureStore({
     reducer: {
-        auth: AuthSlice.reducer
+        auth: AuthSlice.reducer,
+        datingsGroups: DatingsGroupsSlice.reducer
     }
 });
 
