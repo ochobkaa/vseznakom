@@ -7,7 +7,7 @@ const searchGroup = (groups: GroupsGroup[]) => {
     if (query)
         return groups.filter(
             group => {
-                const filteredQuery = query.replace(/[^a-z0-9а-я]/gi, '');
+                const filteredQuery = query.replace(/[^a-z0-9а-я\s]/gi, '');
                 const exp = new RegExp(filteredQuery, "i");
                 return group.name.search(exp) !== -1
             }
