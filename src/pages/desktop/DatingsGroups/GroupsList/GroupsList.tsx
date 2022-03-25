@@ -25,7 +25,7 @@ const GroupsList = () => {
                 </Box>
             </>
             : <Box sx={GroupsLoadingSx}>
-                    <CircularProgress sx={GroupsSpinnerSx}/>
+                <CircularProgress size="100px" sx={GroupsSpinnerSx}/>
             </Box>}
         </>
     );

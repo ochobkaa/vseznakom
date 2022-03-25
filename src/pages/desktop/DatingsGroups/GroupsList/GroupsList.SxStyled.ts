@@ -10,8 +10,6 @@ export const GroupsLoadingSx: SxProps<Theme> = {
 }
 
 export const GroupsSpinnerSx: SxProps<Theme> = {
-    width: "150px",
-    height: "150px",
     ml: "auto",
     mr: "auto",
     mt: "100px"
