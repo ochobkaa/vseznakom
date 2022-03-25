@@ -1,15 +1,15 @@
 import React from 'react';
 import useDatingsGroups from "../../../hooks/datingsGroups";
-import {Grid} from "@mui/material";
+import {Box, Grid} from "@mui/material";
 import DatingsGroup from "./DatingsGroup";
+import {DatingsGroupsSx} from "./DatingsGroups.SxStyled";
 
 const DatingsGroups = () => {
     const groups = useDatingsGroups();
-    console.log(groups);
 
     return (
         <>
-            <Grid container spacing="auto">
+            <Box sx={DatingsGroupsSx}>
                 {groups.map(
                     group => <DatingsGroup
                         groupName={group.name}
@@ -17,7 +17,7 @@ const DatingsGroups = () => {
                         url={`https://vk.com/${group.screen_name}`}
                     />
                 )}
-            </Grid>
+            </Box>
         </>
     );
 };
