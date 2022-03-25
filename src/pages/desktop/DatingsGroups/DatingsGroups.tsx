@@ -9,10 +9,10 @@ const DatingsGroups = () => {
         <>
             <TextField
                 variant="outlined"
-                label="Найти..."
+                placeholder="Найти..."
                 sx={GroupSearchSx}
                 InputProps={{
-                    startAdornment: <Search/>
+                    startAdornment: <Search sx={{mr: "4px"}}/>
                 }}
             />
             <GroupsList/>
