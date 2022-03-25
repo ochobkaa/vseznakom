@@ -4,5 +4,5 @@ export const GroupsListSx: SxProps<Theme> = {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, 1fr)",
     gridAutoRows: "1fr",
-    gridAutoFlow: "dense",
+    gridAutoFlow: "column",
 }
