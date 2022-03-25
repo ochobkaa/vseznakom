@@ -2,7 +2,7 @@ import React from 'react';
 import DatingsGroup from "./DatingsGroup";
 import {Box, CircularProgress, Typography} from "@mui/material";
 import useDatingsGroups from "../../../../hooks/datingsGroups";
-import {GroupsListSx} from "./GroupsList.SxStyled";
+import {GroupsListSx, GroupsLoadingSx, GroupsSpinnerSx} from "./GroupsList.SxStyled";
 import GroupsCount from "./GroupsCount";
 import searchGroups from "./GroupsList.searchGroup";
 
@@ -24,7 +24,9 @@ const GroupsList = () => {
                     )}
                 </Box>
             </>
-            : <CircularProgress sx={{margin: "auto"}}/>}
+            : <Box sx={GroupsLoadingSx}>
+                    <CircularProgress sx={GroupsSpinnerSx}/>
+            </Box>}
         </>
     );
 };
