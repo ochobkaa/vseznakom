@@ -9,7 +9,7 @@ const SearchInput = () => {
     const dispatch = useAppDispatch();
     const actions = DatingsGroupsSlice.actions;
 
-    const onInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const onInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(actions.search(event.currentTarget.value))
     }
 
@@ -21,7 +21,7 @@ const SearchInput = () => {
             InputProps={{
                 startAdornment: <Search sx={{mr: "4px"}}/>
             }}
-            onInput={onInput}
+            onChange={onInput}
         />
     );
 };
