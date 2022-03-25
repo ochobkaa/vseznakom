@@ -2,14 +2,13 @@ import React from 'react';
 import DatingsGroup from "./DatingsGroup";
 import {Box} from "@mui/material";
 import useDatingsGroups from "../../../../hooks/datingsGroups";
-import {GroupsListSx} from "./DatingsGroup/GroupsList.SxStyled";
-import style from "./GroupsList.module.css";
+import {GroupsListSx} from "./GroupsList.SxStyled";
 
 const GroupsList = () => {
     const groups = useDatingsGroups();
 
     return (
-        <Box sx={GroupsListSx} style={style}>
+        <Box sx={GroupsListSx}>
             {groups.map(
                 group => <DatingsGroup
                     groupName={group.name}
