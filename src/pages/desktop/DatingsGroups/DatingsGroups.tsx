@@ -14,7 +14,7 @@ const DatingsGroups = () => {
                     group => <DatingsGroup
                         groupName={group.name}
                         avatar={group.photo_100 ?? ""}
-                        url={`vk.com/${group.screen_name}`}
+                        url={`https://vk.com/${group.screen_name}`}
                     />
                 )}
             </Grid>

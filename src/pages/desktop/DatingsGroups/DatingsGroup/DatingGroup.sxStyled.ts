@@ -1,11 +1,11 @@
 import {SxProps, Theme} from "@mui/material";
 
 export const DatingGroupSx: SxProps<Theme> = {
-    width: "150px",
     height: "180px",
 
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
     alignItems: "center",
     overflow: "hidden"
 }
@@ -16,6 +16,7 @@ export const GroupAvatarSx: SxProps<Theme> = {
 }
 
 export const GroupNameSx: SxProps<Theme> = {
+    width: "150px",
     height: "2em",
 
     textAlign: "center",
