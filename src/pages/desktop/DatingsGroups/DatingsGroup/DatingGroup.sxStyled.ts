@@ -6,10 +6,15 @@ export const DatingGroupSx: SxProps<Theme> = {
 
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    overflowY: "hidden"
 }
 
 export const GroupAvatarSx: SxProps<Theme> = {
     width: "100px",
     height: "100px"
+}
+
+export const GroupNameSx: SxProps<Theme> = {
+    textAlign: "center"
 }
