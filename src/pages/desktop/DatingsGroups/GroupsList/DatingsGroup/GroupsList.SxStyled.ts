@@ -2,7 +2,7 @@ import {SxProps, Theme} from "@mui/material";
 
 export const GroupsListSx: SxProps<Theme> = {
     display: "grid",
-    gridAutoColumns: "auto",
+    gridTemplateColumns: "repeat(auto-fit, 1fr)",
     gridAutoRows: "1fr",
     gridAutoFlow: "dense",
 }
