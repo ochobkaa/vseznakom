@@ -2,16 +2,15 @@ import React from 'react';
 import DatingsGroup from "./DatingsGroup";
 import {Box, Typography} from "@mui/material";
 import useDatingsGroups from "../../../../hooks/datingsGroups";
-import {GroupsCountSx, GroupsListSx} from "./GroupsList.SxStyled";
+import {GroupsListSx} from "./GroupsList.SxStyled";
+import GroupsCount from "./GroupsCount";
 
 const GroupsList = () => {
     const groups = useDatingsGroups();
 
     return (
         <>
-            <Typography variant="h6" sx={GroupsCountSx}>
-                {groups.length} групп
-            </Typography>
+            <GroupsCount count={groups.length}/>
             <Box sx={GroupsListSx}>
                 {groups.map(
                     group => <DatingsGroup
