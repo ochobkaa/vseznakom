@@ -8,6 +8,7 @@ export const DatingGroupSx: SxProps<Theme> = {
     flexDirection: "column",
     justifyContent: "space-evenly",
     alignItems: "center",
+    justifyItems: "start",
     overflow: "hidden"
 }
 
