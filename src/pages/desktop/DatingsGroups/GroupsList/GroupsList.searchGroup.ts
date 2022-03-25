@@ -7,7 +7,8 @@ const searchGroup = (groups: GroupsGroup[]) => {
     if (query)
         return groups.filter(
             group => {
-                const exp = new RegExp(query, "ig");
+                const filteredQuery = query.replace(/[^a-z0-9]/gi, '');
+                const exp = new RegExp(filteredQuery, "i");
                 return group.name.search(exp) !== -1
             }
         )
