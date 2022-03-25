@@ -2,15 +2,16 @@ import React from 'react';
 import {Typography} from "@mui/material";
 import {GroupsCountSx} from "./GroupsCount.SxStyled";
 import GroupsCountProps from "./GroupsCount.Props";
-import getPronoun from "./GroupsCount.getPronoun";
+import getPronounedGroup from "./GroupsCount.getPronounedGroup";
 
 const GroupsCount = (props: GroupsCountProps) => {
     const {count} = props;
-    const pronoun = getPronoun(count);
+    const pronounedGroup = getPronounedGroup(count);
+    const pronounedSearchStatus = getPronounedGroup(count);
 
     return (
         <Typography variant="h4" sx={GroupsCountSx}>
-            {count} групп{pronoun}
+            {pronounedSearchStatus} {count} {pronounedGroup}
         </Typography>
     );
 };

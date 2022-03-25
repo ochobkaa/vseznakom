@@ -3,7 +3,8 @@ import DatingsGroupsSliceState from "./datingsGroupsSlice.State";
 import {GroupsGroup} from "@vkontakte/api-schema-typescript";
 
 const initialState : DatingsGroupsSliceState = {
-    datingsGroups: []
+    datingsGroups: [],
+    searchQuery: ""
 }
 
 const datingsGroupsSlice = createSlice({
@@ -12,6 +13,9 @@ const datingsGroupsSlice = createSlice({
     reducers: {
         setDatingsGroups(state, action: PayloadAction<GroupsGroup[]>) {
             state.datingsGroups = action.payload;
+        },
+        search(state, action: PayloadAction<string>) {
+            state.searchQuery = action.payload;
         }
     }
 });
