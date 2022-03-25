@@ -3,12 +3,13 @@ import DatingsGroup from "./DatingsGroup";
 import {Box} from "@mui/material";
 import useDatingsGroups from "../../../../hooks/datingsGroups";
 import {GroupsListSx} from "./DatingsGroup/GroupsList.SxStyled";
+import style from "./GroupsList.module.css";
 
 const GroupsList = () => {
     const groups = useDatingsGroups();
 
     return (
-        <Box sx={GroupsListSx}>
+        <Box sx={GroupsListSx} style={style}>
             {groups.map(
                 group => <DatingsGroup
                     groupName={group.name}
