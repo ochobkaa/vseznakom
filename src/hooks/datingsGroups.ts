@@ -16,7 +16,7 @@ const useDatingsGroups = () => {
     useEffect(
         () => {
             const groupIdsStr = GROUP_IDS.join(",")
-            VkApi.call<GroupsGetByIdResponse>(
+            VkApi.call(
                 "groups.getById",
                 dispatchDatingsGroups,
                 {
@@ -28,8 +28,8 @@ const useDatingsGroups = () => {
         []
     )
 
-    const dispatchDatingsGroups = (groups: GroupsGroup[]) => {
-        dispatch(actions.setDatingsGroups(groups));
+    const dispatchDatingsGroups = (groups: { response: GroupsGroup[] }) => {
+        dispatch(actions.setDatingsGroups(groups.response));
     }
 
     return groups;
