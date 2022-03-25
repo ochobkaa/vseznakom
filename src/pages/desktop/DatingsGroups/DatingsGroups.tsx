@@ -5,6 +5,7 @@ import DatingsGroup from "./DatingsGroup";
 
 const DatingsGroups = () => {
     const groups = useDatingsGroups();
+    console.log(groups);
 
     return (
         <>
