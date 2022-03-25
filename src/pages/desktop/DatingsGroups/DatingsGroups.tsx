@@ -9,11 +9,11 @@ const DatingsGroups = () => {
 
     return (
         <>
-            <Grid>
+            <Grid container spacing={2}>
                 {groups.map(
                     group => <DatingsGroup
                         groupName={group.name}
-                        avatar={group.photo_200 ?? ""}
+                        avatar={group.photo_100 ?? ""}
                         url={`vk.com/${group.screen_name}`}
                     />
                 )}

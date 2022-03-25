@@ -7,6 +7,6 @@ export const DatingGroupSx: SxProps<Theme> = {
 }
 
 export const GroupAvatarSx: SxProps<Theme> = {
-    width: "200px",
-    height: "200px"
+    width: "100px",
+    height: "100px"
 }
