@@ -1,11 +1,12 @@
 import {SxProps, Theme} from "@mui/material";
 
 export const DatingGroupSx: SxProps<Theme> = {
-    height: "200px",
+    height: "180px",
+    margin: "12px",
 
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     alignItems: "center",
     overflow: "hidden"
 }
