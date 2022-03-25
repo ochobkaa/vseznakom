@@ -12,7 +12,7 @@ const GroupsList = () => {
 
     return (
         <>
-            <GroupsCount count={groups.length}/>
+            <GroupsCount count={searchedGroups.length}/>
             <Box sx={GroupsListSx}>
                 {searchedGroups.map(
                     group => <DatingsGroup
