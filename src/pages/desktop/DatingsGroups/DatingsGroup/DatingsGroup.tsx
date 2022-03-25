@@ -7,7 +7,7 @@ const DatingsGroup = (props: DatingsGroupProps) => {
     const {groupName, avatar, url} = props;
 
     return (
-        <Grid item xs sx={DatingGroupSx}>
+        <Grid item sx={DatingGroupSx}>
             <a href={url} style={{ display: "contents", color: "inherit", textDecoration: "none"}}>
                 <Avatar src={avatar} sx={GroupAvatarSx}/>
                 <Typography variant="h6" sx={GroupNameSx}>{groupName}</Typography>

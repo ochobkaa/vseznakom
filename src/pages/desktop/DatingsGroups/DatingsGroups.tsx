@@ -9,7 +9,7 @@ const DatingsGroups = () => {
 
     return (
         <>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} columns={{ sm: 3, md: 4, lg: 5, xl: 6 }}>
                 {groups.map(
                     group => <DatingsGroup
                         groupName={group.name}
