@@ -2,12 +2,12 @@ import {SxProps, Theme} from "@mui/material";
 
 export const DatingGroupSx: SxProps<Theme> = {
     width: "150px",
-    height: "200px",
+    height: "180px",
 
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    overflowY: "hidden"
+    overflow: "hidden"
 }
 
 export const GroupAvatarSx: SxProps<Theme> = {
@@ -16,5 +16,9 @@ export const GroupAvatarSx: SxProps<Theme> = {
 }
 
 export const GroupNameSx: SxProps<Theme> = {
-    textAlign: "center"
+    height: "2em",
+
+    textAlign: "center",
+    wordWrap: "break-word",
+    textOverflow: "ellipsis"
 }
