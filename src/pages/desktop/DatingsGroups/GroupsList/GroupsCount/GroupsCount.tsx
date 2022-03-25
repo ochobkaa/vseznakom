@@ -9,7 +9,7 @@ const GroupsCount = (props: GroupsCountProps) => {
     const pronoun = getPronoun(count);
 
     return (
-        <Typography variant="h4" sx={GroupsCountSx}>
+        <Typography variant="h5" sx={GroupsCountSx}>
             {count} групп{pronoun}
         </Typography>
     );
