@@ -7,7 +7,7 @@ const searchGroup = (groups: GroupsGroup[]) => {
     if (query)
         return groups.filter(
             group => {
-                const exp = new RegExp(query, "i");
+                const exp = new RegExp(query, "ig");
                 return group.name.search(exp) !== -1
             }
         )
