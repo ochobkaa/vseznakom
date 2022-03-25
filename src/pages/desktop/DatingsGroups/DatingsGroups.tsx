@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextField} from "@mui/material";
+import {TextField, Typography} from "@mui/material";
 import GroupsList from "./GroupsList";
 import {GroupSearchSx} from "./DatingsGroups.SxStyled";
 import Search from "@mui/icons-material/Search";
