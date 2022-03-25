@@ -17,7 +17,7 @@ export const GroupAvatarSx: SxProps<Theme> = {
 
 export const GroupNameSx: SxProps<Theme> = {
     width: "150px",
-    height: "2em",
+    height: "3em",
 
     textAlign: "center",
     wordWrap: "break-word",
