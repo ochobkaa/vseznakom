@@ -1,23 +1,21 @@
 import React from 'react';
-import useDatingsGroups from "../../../hooks/datingsGroups";
-import {Box, Grid} from "@mui/material";
-import DatingsGroup from "./DatingsGroup";
-import {DatingsGroupsSx} from "./DatingsGroups.SxStyled";
+import {TextField} from "@mui/material";
+import GroupsList from "./GroupsList";
+import {GroupSearchSx} from "./DatingsGroups.SxStyled";
+import Search from "@mui/icons-material/Search";
 
 const DatingsGroups = () => {
-    const groups = useDatingsGroups();
-
     return (
         <>
-            <Box sx={DatingsGroupsSx}>
-                {groups.map(
-                    group => <DatingsGroup
-                        groupName={group.name}
-                        avatar={group.photo_100 ?? ""}
-                        url={`https://vk.com/${group.screen_name}`}
-                    />
-                )}
-            </Box>
+            <TextField
+                variant="outlined"
+                label="Найти..."
+                sx={GroupSearchSx}
+                InputProps={{
+                    startAdornment: <Search/>
+                }}
+            />
+            <GroupsList/>
         </>
     );
 };

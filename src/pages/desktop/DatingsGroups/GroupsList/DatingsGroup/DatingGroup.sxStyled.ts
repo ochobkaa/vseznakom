@@ -1,6 +1,6 @@
 import {SxProps, Theme} from "@mui/material";
 
-export const DatingGroupSx: SxProps<Theme> = {
+export const DatingsGroupSx: SxProps<Theme> = {
     margin: "12px",
 
     display: "flex",

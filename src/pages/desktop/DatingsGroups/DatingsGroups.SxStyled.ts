@@ -1,7 +1,6 @@
 import {SxProps, Theme} from "@mui/material";
 
-export const DatingsGroupsSx: SxProps<Theme> = {
-    display: "flex",
-    justifyContent: "space-evenly",
-    flexWrap: "wrap"
+export const GroupSearchSx: SxProps<Theme> = {
+    width: "100%",
+    height: "60px"
 }
