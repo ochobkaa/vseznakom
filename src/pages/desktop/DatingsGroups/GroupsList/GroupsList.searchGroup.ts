@@ -6,7 +6,7 @@ const searchGroup = (groups: GroupsGroup[]) => {
 
     if (query)
         return groups.filter(
-            group => group.name.search(query) !== -1
+            group => group.name.toLowerCase().search(query.toLowerCase()) !== -1
         )
     else
         return groups;
